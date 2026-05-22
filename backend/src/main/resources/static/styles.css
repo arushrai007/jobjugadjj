@@ -1,93 +1,229 @@
 body {
     font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     margin: 0;
-    background: #f4f7fb;
-    color: #20232a;
+    background: linear-gradient(180deg, #eef4ff 0%, #f7f9fd 100%);
+    color: #111827;
+}
+
+.page-shell {
+    min-height: 100vh;
+}
+
+.hero {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 44px 24px 16px;
+    text-align: center;
+}
+
+.eyebrow {
+    margin: 0;
+    color: #2563eb;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+}
+
+.hero h1 {
+    margin: 16px auto 12px;
+    font-size: clamp(2rem, 4vw, 3.4rem);
+    line-height: 1.05;
+    max-width: 900px;
+}
+
+.hero-copy {
+    max-width: 720px;
+    margin: 0 auto;
+    color: #4b5563;
+    font-size: 1rem;
+    line-height: 1.75;
 }
 
 .container {
     max-width: 1080px;
     margin: 0 auto;
-    padding: 32px 24px;
+    padding: 0 24px 48px;
 }
 
-h1 {
-    margin-bottom: 16px;
-}
-
-.card {
+.panel {
     background: #ffffff;
-    border-radius: 16px;
-    padding: 24px;
-    box-shadow: 0 20px 45px rgba(15, 23, 42, 0.08);
+    border-radius: 28px;
+    padding: 28px;
+    box-shadow: 0 22px 55px rgba(15, 23, 42, 0.08);
+    margin-bottom: 28px;
+}
+
+.panel-header {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
     margin-bottom: 24px;
 }
 
+.panel-header h2 {
+    margin: 0;
+    font-size: 1.6rem;
+}
+
+.panel-header p {
+    margin: 0;
+    color: #6b7280;
+    line-height: 1.7;
+}
+
 .form-row {
-    display: flex;
-    gap: 12px;
-    flex-wrap: wrap;
-    margin-bottom: 16px;
+    display: grid;
+    gap: 16px;
+    grid-template-columns: 1fr auto;
+    margin-bottom: 18px;
 }
 
 input[type="text"], textarea {
     width: 100%;
-    padding: 14px 16px;
-    border: 1px solid #d7dfe7;
-    border-radius: 12px;
+    padding: 16px 18px;
+    border: 1px solid #d1d5db;
+    border-radius: 16px;
+    background: #f8fafc;
+    font-size: 1rem;
+    color: #111827;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+input[type="text"]:focus, textarea:focus {
+    outline: none;
+    border-color: #2563eb;
+    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.08);
+}
+
+textarea {
+    min-height: 200px;
     resize: vertical;
 }
 
 button {
     background: #2563eb;
-    color: white;
+    color: #ffffff;
     border: none;
-    padding: 12px 18px;
-    border-radius: 10px;
+    padding: 16px 24px;
+    border-radius: 16px;
     cursor: pointer;
-    transition: transform 0.16s ease, box-shadow 0.16s ease;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    transition: transform 0.18s ease, box-shadow 0.18s ease, background-color 0.18s ease;
 }
 
 button:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 8px 20px rgba(37, 99, 235, 0.24);
+    transform: translateY(-2px);
+    box-shadow: 0 16px 30px rgba(37, 99, 235, 0.2);
+}
+
+.results {
+    display: grid;
+    gap: 16px;
 }
 
 .job-card {
     border: 1px solid #e5e7eb;
-    border-radius: 14px;
-    padding: 18px;
-    margin-bottom: 16px;
-    background: #fcfdff;
+    border-radius: 20px;
+    padding: 22px;
+    background: #f8fbff;
 }
 
 .job-card h3 {
-    margin-top: 0;
+    margin: 0 0 8px;
+    font-size: 1.2rem;
+}
+
+.job-card p {
+    margin: 6px 0;
+    color: #374151;
+    line-height: 1.6;
+}
+
+.job-card a {
+    display: inline-block;
+    margin-top: 12px;
+    color: #2563eb;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.job-card a:hover {
+    text-decoration: underline;
+}
+
+.grid-two {
+    display: grid;
+    gap: 20px;
+}
+
+.field-block label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: 600;
+    color: #111827;
+}
+
+.panel-footer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.score-result {
+    flex: 1;
+    min-width: 240px;
 }
 
 .score-block {
-    padding: 16px;
-    border: 1px solid #d1d5db;
-    border-radius: 14px;
+    padding: 18px;
+    border: 1px solid #e5e7eb;
+    border-radius: 18px;
     background: #f8fafc;
+}
+
+.score-block h3 {
+    margin-top: 0;
 }
 
 .score-lists {
     display: grid;
-    gap: 12px;
-    margin-top: 12px;
+    gap: 14px;
+    margin-top: 14px;
+}
+
+.score-lists div {
+    line-height: 1.6;
+    color: #374151;
 }
 
 .error {
-    color: #b91c1c;
+    color: #dc2626;
 }
 
-@media (min-width: 720px) {
+@media (max-width: 820px) {
     .form-row {
-        align-items: flex-end;
+        grid-template-columns: 1fr;
     }
 
-    input[type="text"] {
-        flex: 1;
+    .grid-two {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 560px) {
+    .hero {
+        padding-top: 24px;
+    }
+
+    .panel {
+        padding: 20px;
+    }
+
+    button {
+        width: 100%;
     }
 }
