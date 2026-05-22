@@ -8,12 +8,12 @@ pipeline {
     }
     stage('Build') {
       steps {
-        bat 'mvn -B -f backend/pom.xml clean package'
+        bat 'docker run --rm -v "%cd%":/workspace -w /workspace maven:3.9.9-eclipse-temurin-21 mvn -B -f backend/pom.xml clean package'
       }
     }
     stage('Run Tests') {
       steps {
-        bat 'mvn -B -f backend/pom.xml test'
+        bat 'docker run --rm -v "%cd%":/workspace -w /workspace maven:3.9.9-eclipse-temurin-21 mvn -B -f backend/pom.xml test'
       }
     }
     stage('Build Docker Image') {
