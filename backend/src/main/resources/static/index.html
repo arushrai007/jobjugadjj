@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Job Jugad</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+    <div class="container">
+        <h1>Job Jugad</h1>
+        <section class="card">
+            <h2>Search Jobs</h2>
+            <div class="form-row">
+                <input type="text" id="jobQuery" placeholder="Search by keyword, role, or skill" />
+                <button id="searchJobsBtn">Search</button>
+            </div>
+            <div id="jobResults"></div>
+        </section>
+
+        <section class="card">
+            <h2>Resume Score Checker</h2>
+            <label>Job Description</label>
+            <textarea id="jobDescription" rows="6" placeholder="Paste the job description here"></textarea>
+            <label>Your Resume Text</label>
+            <textarea id="resumeText" rows="6" placeholder="Paste your resume text here"></textarea>
+            <button id="scoreResumeBtn">Score Resume</button>
+            <div id="scoreResult"></div>
+        </section>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>

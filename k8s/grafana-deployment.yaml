@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: job-jugad-grafana
+  labels:
+    app: job-jugad-grafana
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: job-jugad-grafana
+  template:
+    metadata:
+      labels:
+        app: job-jugad-grafana
+    spec:
+      containers:
+        - name: grafana
+          image: grafana/grafana:latest
+          ports:
+            - containerPort: 3000

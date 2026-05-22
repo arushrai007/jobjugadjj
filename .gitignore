@@ -1,0 +1,11 @@
+**/target/
+**/build/
+**/.idea/
+**/.vscode/
+**/*.iml
+*.log
+*.tmp
+.DS_Store
+.gradle
+.gradle*
+*.swp

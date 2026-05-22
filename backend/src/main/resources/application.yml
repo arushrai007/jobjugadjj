@@ -1,0 +1,15 @@
+server:
+  port: 8080
+
+remotive:
+  api:
+    url: "https://remotive.com/api/remote-jobs?search="
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,prometheus
+  endpoint:
+    prometheus:
+      enabled: true

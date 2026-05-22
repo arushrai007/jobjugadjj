@@ -1,0 +1,9 @@
+apiVersion: 1
+providers:
+  - name: "Job Jugad Dashboards"
+    orgId: 1
+    folder: "Job Jugad"
+    type: file
+    disableDeletion: false
+    options:
+      path: /var/lib/grafana/dashboards
