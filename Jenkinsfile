@@ -8,17 +8,17 @@ pipeline {
     }
     stage('Build') {
       steps {
-        sh 'mvn -B -f backend/pom.xml clean package'
+        bat 'mvn -B -f backend/pom.xml clean package'
       }
     }
     stage('Run Tests') {
       steps {
-        sh 'mvn -B -f backend/pom.xml test'
+        bat 'mvn -B -f backend/pom.xml test'
       }
     }
     stage('Build Docker Image') {
       steps {
-        sh 'docker build -t job-jugad:latest .'
+        bat 'docker build -t job-jugad:latest .'
       }
     }
   }
