@@ -28,12 +28,14 @@ pipeline {
         }
 
         stage('Deploy Container') {
-            steps {
-                bat 'docker compose down'
-                bat 'docker compose up --build -d'
-            }
-        }
+    steps {
+        bat '''
+        docker compose down
+        docker system prune -f
+        docker compose up --build -d
+        '''
     }
+}
 
     post {
 
