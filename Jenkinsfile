@@ -28,12 +28,11 @@ pipeline {
         }
 
         stage('Deploy') {
-            steps {
-                bat 'docker compose down || exit 0'
-                bat 'docker rm -f job-jugad-backend || exit 0'
-                bat 'docker compose up --build -d'
-            }
-        }
+    steps {
+        bat 'docker compose down --remove-orphans'
+        bat 'docker compose up --build -d'
+    }
+}
     }
 
     post {
