@@ -3,9 +3,15 @@ pipeline {
 
     stages {
 
+        stage('Clean Workspace') {
+            steps {
+                deleteDir()
+            }
+        }
+
         stage('Checkout') {
             steps {
-                checkout scm
+                git branch: 'main', url: 'YOUR_GITHUB_REPO'
             }
         }
 
@@ -15,36 +21,17 @@ pipeline {
             }
         }
 
-        stage('Run Tests') {
-            steps {
-                bat 'docker run --rm -v "%cd%":/workspace -w /workspace maven:3.9.9-eclipse-temurin-21 mvn -B -f backend/pom.xml test'
-            }
-        }
-
         stage('Build Docker Image') {
             steps {
-                bat 'docker build -t job-jugad:latest .'
+                bat 'docker compose down'
+                bat 'docker build --no-cache -t job-jugad:latest .'
             }
         }
 
-        stage('Deploy Container') {
-    steps {
-        bat '''
-        docker compose down
-        docker system prune -f
-        docker compose up --build -d
-        '''
-    }
-}
-
-    post {
-
-        success {
-            echo 'Deployment successful!'
-        }
-
-        failure {
-            echo 'Build failed. Please inspect logs.'
+        stage('Deploy') {
+            steps {
+                bat 'docker compose up --build -d'
+            }
         }
     }
 }
