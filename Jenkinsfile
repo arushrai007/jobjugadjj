@@ -11,7 +11,7 @@ pipeline {
 
         stage('Checkout') {
             steps {
-                git branch: 'master', url: 'https://github.com/arushrai007/jobjugadjj.git'
+                git url: 'https://github.com/arushrai007/jobjugadjj.git'
             }
         }
 
@@ -23,15 +23,26 @@ pipeline {
 
         stage('Build Docker Image') {
             steps {
-                bat 'docker compose down'
-                bat 'docker build --no-cache -t job-jugad:latest .'
+                bat 'docker build --no-cache -t jj-pipeline-backend .'
             }
         }
 
         stage('Deploy') {
             steps {
+                bat 'docker compose down || exit 0'
+                bat 'docker rm -f job-jugad-backend || exit 0'
                 bat 'docker compose up --build -d'
             }
+        }
+    }
+
+    post {
+        success {
+            echo 'Deployment successful!'
+        }
+
+        failure {
+            echo 'Build failed.'
         }
     }
 }
