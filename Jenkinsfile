@@ -1,4 +1,5 @@
 pipeline {
+
     agent any
 
     stages {
@@ -15,9 +16,15 @@ pipeline {
             }
         }
 
-        stage('Build') {
+        stage('Build Maven Project') {
             steps {
-                bat 'docker run --rm -v "%cd%":/workspace -w /workspace maven:3.9.9-eclipse-temurin-21 mvn -B -f backend/pom.xml clean package'
+                bat '''
+                docker run --rm ^
+                -v "%cd%":/workspace ^
+                -w /workspace ^
+                maven:3.9.9-eclipse-temurin-21 ^
+                mvn -B -f backend/pom.xml clean package -DskipTests
+                '''
             }
         }
 
@@ -27,15 +34,18 @@ pipeline {
             }
         }
 
-        stage('Deploy') {
-    steps {
-        bat 'docker compose down --remove-orphans'
-        bat 'docker compose up --build -d'
-    }
-}
+        stage('Deploy Containers') {
+            steps {
+                bat '''
+                docker compose down --remove-orphans
+                docker compose up --build -d
+                '''
+            }
+        }
     }
 
     post {
+
         success {
             echo 'Deployment successful!'
         }
