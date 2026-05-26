@@ -11,7 +11,7 @@ pipeline {
 
         stage('Checkout') {
             steps {
-                git branch: 'main', url: 'YOUR_GITHUB_REPO'
+                git branch: 'main', url: 'https://github.com/arushrai007/jobjugadjj.git'
             }
         }
 
