@@ -1,4 +1,4 @@
-# Job Jugad (Based on Devops tools)
+# Job Jugad (Full stack app Based on Devops tools)
 
 Job Jugad is a Java + Maven project that aggregates remote job listings from free public APIs and provides a resume scoring endpoint to compare a resume against a job description.
 
